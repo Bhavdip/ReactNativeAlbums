@@ -14,7 +14,7 @@ import Header from './src/components/Header';
 import AlbumList from './src/components/AlbumList';
 
 const albums = () => (
-  <View>
+  <View style={{ flex: 1 }}>
     <Header screenTitle={'Albums'} />
     <AlbumList />
   </View>
