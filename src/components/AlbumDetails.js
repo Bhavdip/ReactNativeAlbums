@@ -1,11 +1,13 @@
 import React from 'react';
-import { Image, View, Text } from 'react-native';
+import { Image, View, Text, Linking } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
+import Button from './Button';
+
 //we take a fucntion component
 
 const AlbumDetails = ({ data }) => {
-  const { title, artist, thumbnail_image, image } = data;
+  const { title, artist, thumbnail_image, image, url } = data;
   const {
     headerContentsStyle,
     thumbnailStyle,
@@ -17,25 +19,29 @@ const AlbumDetails = ({ data }) => {
   return (
     <Card record={data} >
       <CardSection>
-      <View style={thumbnailContainerStyle}>
-          <Image
-          style={thumbnailStyle}
-          source={{ uri: thumbnail_image }}
-          />
-      </View>
-      <View style={headerContentsStyle}>
-        <Text style={headerTitleStyle}>{title}</Text>
-        <Text>{artist}</Text>
-      </View>
+        <View style={thumbnailContainerStyle}>
+            <Image
+            style={thumbnailStyle}
+            source={{ uri: thumbnail_image }}
+            />
+        </View>
+        <View style={headerContentsStyle}>
+          <Text style={headerTitleStyle}>{title}</Text>
+          <Text>{artist}</Text>
+        </View>
       </CardSection>
 
       <CardSection>
-        <Image
-        style={imageStyle}
-        source={{ uri: image }}
-        />
+          <Image
+          style={imageStyle}
+          source={{ uri: image }}
+          />
       </CardSection>
-
+      <CardSection>
+        <Button onPress={() => Linking.openURL(url)}>
+        click Me !!!
+        </Button>
+      </CardSection>
   </Card>
   );
 };
